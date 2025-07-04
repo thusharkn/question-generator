@@ -26,8 +26,9 @@ if uploaded_file:
 
     if st.button("Generate Questions"):
         with st.spinner("Generating..."):
-            questions = []
-context = content[:2000]  # Chunk text to avoid overload
+    
+questions = []
+context = content[:2000]
 
 for i in range(num_q):
     prompt = f"Based on the following content, generate 1 distinct and relevant academic question:\n\n{context}"
