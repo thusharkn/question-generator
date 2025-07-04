@@ -5,7 +5,7 @@ from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 
 st.set_page_config(page_title="Concept Question Generator")
 
-st.title("📘 Generate Questions:")
+st.title("Generate Questions:")
 
 uploaded_file = st.file_uploader("Upload the PDF", type="pdf")
 num_q = st.slider("Number of questions", 1, 10, 5)
