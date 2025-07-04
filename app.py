@@ -12,8 +12,8 @@ num_q = st.slider("Number of questions", 1, 10, 5)
 
 @st.cache_resource
 def load_model():
-    model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
-    tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
+    model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-large")
+    tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-large")
     return pipeline("text2text-generation", model=model, tokenizer=tokenizer, temperature=0.9)
 
 qgen = None
