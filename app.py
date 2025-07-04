@@ -26,7 +26,15 @@ if uploaded_file:
 
     if st.button("Generate Questions"):
         with st.spinner("Generating..."):
-            prompt = f"Generate {num_q} relevant questions from the following educational content:\n{content[:2000]}"
-            result = qgen(prompt, max_length=512, do_sample=True)[0]['generated_text']
+            questions = []
+context = content[:2000]  # Chunk text to avoid overload
+
+for i in range(num_q):
+    prompt = f"Based on the following content, generate 1 distinct and relevant academic question:\n\n{context}"
+    output = qgen(prompt, max_length=128, do_sample=True)[0]['generated_text']
+    questions.append(f"{i+1}. {output.strip()}")
+
+result = "\n".join(questions)
+
             st.subheader("Generated Questions")
             st.text_area("Output", result, height=300)
